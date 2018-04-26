@@ -10,18 +10,18 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.MainActivity_ViewPager)
     ViewPager viewPager;
-    @BindView(R.id.MainActivity_TabLayout)
     TabLayout tabLayout;
-
-    private FragmentAdapter adapter;
+    FragmentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
+        viewPager = (ViewPager) findViewById(R.id.MainActivity_ViewPager);
+        tabLayout = (TabLayout) findViewById(R.id.MainActivity_TabLayout);
+
         adapter = new FragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
